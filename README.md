@@ -1,4 +1,4 @@
-# memory-modelanthonystaiger8-bit
+# memory-model anthonystaiger8-bit
 Proposta: Memória Curta + Memória Longa para Assistentes Conversacionais
 
 Resumo
@@ -133,24 +133,18 @@ Conformidade
 
 Considerar LGPD, GDPR e leis locais; procedimentos jurídicos claros.
 LICENÇA
-Licença MIT
+— CC BY-NC-ND 4.0:
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
 
-Direitos autorais (c) 2026 Anthony
+Copyright (c) 2026 Anthony William Staiger
 
-É concedida permissão, gratuitamente, a qualquer pessoa que obtenha uma cópia
-deste software e arquivos de documentação associados (o "Software"), para lidar
-com o Software sem restrições, incluindo, sem limitação, os direitos
-de usar, copiar, modificar, fundir, publicar, distribuir, sublicenciar e/ou vender
-cópias do Software, e para permitir que as pessoas a quem o Software for
-fornecido o façam, sujeitas às seguintes condições:
+Este trabalho está licenciado sob a Licença Creative Commons
+Atribuição-NãoComercial-SemDerivações 4.0 Internacional.
 
-O aviso de direitos autorais acima e este aviso de permissão devem ser incluídos em todas
-as cópias ou partes substanciais do Software.
+Você pode compartilhar este material desde que:
+- Dê crédito ao autor (Anthony William Staiger)
+- Não use para fins comerciais
+- Não modifique ou crie obras derivadas sem permissão
 
-O SOFTWARE É FORNECIDO "NO ESTADO EM QUE SE ENCONTRA", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU
-IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO,
-ADEQUAÇÃO A UM FIM ESPECÍFICO E NÃO VIOLAÇÃO. EM NENHUMA HIPÓTESE OS
-AUTORES OU DETENTORES DOS DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUAISQUER REIVINDICAÇÕES, DANOS OU OUTRAS
-RESPONSABILIDADES, SEJA EM AÇÃO CONTRATUAL, EXTRACONTRATUAL OU DE OUTRA NATUREZA, DECORRENTES
-DE, OU RELACIONADAS COM, O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES COM O
-SOFTWARE.
+Para ver uma cópia desta licença, acesse:
+https://creativecommons.org/licenses/by-nc-nd/4.0/
