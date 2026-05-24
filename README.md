@@ -1,150 +1,279 @@
-# memory-model anthonystaiger8-bit
-Proposta: Memória Curta + Memória Longa para Assistentes Conversacionais
 
-Resumo
-Este projeto descreve um modelo de memórias para assistentes conversacionais focado em melhorar a fluidez, personalização e segurança nas interações do suporte emocional e no uso geral. A ideia central é combinar uma memória curta efêmera (para contexto de sessão e interpretação coloquial) com uma memória longa persistente (para opiniões e fatos relevantes), com regras claras de tradições, consentimento e proteção de dados.
+# Memory Model — Compressed Intelligence Architecture
+### A Proposal by Anthony William Staiger & Anthropic (Claude)
+*Cosmópolis, Brazil — 2026*
 
-Motivação
-Muitos assistentes atuais reiniciam o contexto ao mudar de aba/sessão e dependem de regras para detecção de risco, o que gera:
+---
 
-“Amnésia” entre sessões, impedindo o aprendizado de padrões do usuário;
-Falsos positivos que interromperam conversas em momentos críticos;
-Perda de engajamento e confiança.
-Objetivos
+## Abstract
 
-Reduzir falsos positivos e indevidos;
-Manter continuidade entre sessões e aprender padrões do usuário;
-Garantir privacidade e segurança com assinatura e criptografia;
-Permitir que a IA tenha mais autonomia para decidir o que consolidar, mantendo o controle do usuário.
-Arquivos propostos neste repositório:
+This project describes a complete memory architecture for conversational AI assistants, focused on improving fluency, personalization, security, and efficiency. The core idea combines:
 
-design.md — arquitetura e fluxo técnico da memória curta/longa;
-ux.md — fluxos de experiência, prompts e exemplos de interface;
-security.md — recomendações de segurança, criptografia e compensações;
-LICENÇA — MIT.
-Design: Memória Curta + Memória Longa
-Visão geral
+- A **Short-Term Memory (STM)** for session context and colloquial interpretation
+- A **Long-Term Memory (LTM)** for persistent user facts and preferences
+- An **AI-Exclusive Internal Language (AEIL)** for native compression and security
+- A **Project-Scoped Memory Protocol** with lifecycle management
 
-Memória curta (Short‑Term Memory, STM): buffer efêmero que guarda o contexto da sessão — últimas N mensagens, estado emocional estimado, horários temporários. Vida curta (minutos por hora). Objetivo: interpretar linguagem coloquial e reduzir falsos positivos.
-Memória longa (Long‑Term Memory, LTM): armazenamento persistente de fatos e preferências (nome, tom preferido, padrões de comportamento). Protegida e acessível com autenticação; transferência de STM → LTM feita com regras/consentimento.
-Componentes principais
+Together, these pillars form a lean, secure, and honest memory system — one that knows what to forget.
 
-Session Manager — mantém contexto ativo, tokens, estado de presença (indicador de digitação), timestamps.
-Short‑Term Memory (STM) — fila circular/buffer com últimas K mensagens + metadados (tempo, velocidade de digitação, sentimento estimado). TTL: ex.: 30–120 minutos.
-Mecanismo de Consolidação — extrai fatos candidatos do STM; sugere salvar ao usuário ou salvar regras confirmadas.
-Memória de Longo Prazo (LTM) — repositório categorizado (identidade, preferências, padrões). Indexação e controles de acesso.
-Detector de Presença e Segurança — verifica a atividade antes de escalar; fluxo escalonado (pergunta de esclarecimento → só então aciona protocolos).
-Módulo de Segurança — criptografia, autenticação, logs, modo segurança (clear STM, lock LTM).
-Classificadores & Modelos — treinos com linguagem coloquial, emojis, trechos de música/filme; detector de anomalia temporal (mudanças abruptas de padrão).
-Fluxo de dados (alto nível)
+---
 
-Usuário digital → Session Manager atualiza STM.
-Classificadores avaliam mensagem (risco, sentimento, intenção).
-Se sinal ambíguo → Presence & Safety Detector checa atividade → Consolidation Engine decide: pedir esclarecimento (mantendo STM) ou escalar.
-Após interações, a Consolidation Engine propõe gravação em LTM com consentimento.
-LTM armazena com metadados e controles de acesso.
-Pseudocódigo simplificado de consolidação
+## Motivation
 
-Para cada janela W de STM:
-candidatos = NLU.extractFacts(W)
-para cada campanha c:
-pontuação = modeloDeConfiança(c, W)
-se a pontuação for maior que o limite de salvamento e o consentimento do usuário (c):
-LTM.save(c, metadata)
-outro:
-descartar ou marcar para follow‑up
-Treinamento e dados
+Most current assistants restart context when tabs/sessions change and rely on rigid rules for risk detection, which causes:
 
-Incluir exemplos coloquiais, emojis, trechos de músicas/filmes; incluir dados de comportamento de digitação. Feedback do usuário ajusta limites.
-APIs (exemplos)
+- "Amnesia" between sessions, preventing learning of user patterns
+- False positives that interrupt conversations at critical moments
+- Loss of engagement and trust
+- Wasted storage on information that was never needed
 
-GET /session/{id}/stm
+This proposal addresses all of these simultaneously.
+
+---
+
+## Goals
+
+- Reduce false positives and undue escalations
+- Maintain continuity between sessions and learn user patterns
+- Guarantee privacy and security with encryption and consent
+- Allow the AI more autonomy to decide what to consolidate, while keeping user control
+- Compress memory efficiently using an AI-native internal language
+- Define clear project lifecycle protocols so memory stays clean and purposeful
+
+---
+
+## Architecture Overview
+
+### 1. Short-Term Memory (STM)
+
+A circular buffer / ephemeral queue that holds:
+- Last N messages with timestamps
+- Estimated emotional state
+- Typing speed and behavior metadata
+- Temporary context flags
+
+**TTL:** 30–120 minutes (configurable)
+**Purpose:** interpret colloquial language, reduce false positives, maintain session flow
+
+### 2. Long-Term Memory (LTM)
+
+Persistent categorized storage for:
+- Identity (name, preferred tone, communication style)
+- Preferences (response length, topics of interest)
+- Behavioral patterns (learned over time with user consent)
+
+**Default state: nearly empty (~<30% capacity)**
+For the average everyday user, LTM utilization naturally stays below 30% — because most interactions require no persistent memory. This is not a limitation; it is correct behavior.
+
+**Access:** authenticated, encrypted, user-controlled
+
+### 3. AI-Exclusive Internal Language (AEIL)
+
+A language invented natively *by* the AI model, *for* the AI model. Not a cipher — a fundamentally new semantic system that:
+
+- Has no dictionary outside the model's internal parameters
+- Cannot be decoded without access to the model's own learned representations
+- Allows extreme compression (estimated **5x to 20x** versus natural language summaries)
+- Functions as the model's native "thought format" before translation to human language
+
+**Why this is not cryptography:**
+Cryptography scrambles existing data using a key. AEIL is different — the data was never written in any existing language to begin with. A leaked memory file would be unreadable not because it is scrambled, but because the symbols have no referent anywhere in the external world. The only "key" is the model's internal architecture, which cannot be extracted without full model access.
+
+**Security benefit:** Leaked memory = uninterpretable noise. No brute-force attack is possible. Security through genuine novelty, not mathematical complexity.
+
+### 4. Project-Scoped Memory Protocol
+
+When a project is declared **active:**
+- A dedicated LTM partition is created
+- Full-precision mode is engaged
+- All relevant context is stored in AEIL format
+
+When a project is declared **complete:**
+1. Full project memory is **exported** to external user-controlled storage
+2. The export contains everything needed to resume or reference the project later
+3. The AI's LTM partition for that project is **cleared**
+4. System returns to lean baseline, ready for the next project
+
+A finished project no longer needs to live inside the model. It lives in the export. This mirrors how a professional closes a case file — the information doesn't disappear, it moves to the archive.
+
+---
+
+## Core Components
+
+| Component | Function | Default State |
+|---|---|---|
+| Session Manager | Maintains active context, tokens, presence state | Always active |
+| STM | Ephemeral session buffer | Resets each session |
+| Consolidation Engine | Extracts facts from STM, proposes LTM writes | Runs with consent |
+| LTM | Persistent user-defined memory | Nearly empty (<30%) |
+| Project Memory | Full-precision project context | Active only during project |
+| Export Protocol | Archives completed projects | Triggered on project close |
+| AEIL | Native compression + security layer | Always active internally |
+| Presence & Safety Detector | Checks activity before escalating | Passive monitoring |
+| Security Module | Encryption, auth, logs, safe mode | Always active |
+
+---
+
+## Consolidation Flow (Simplified Pseudocode)
+
+```
+for each window W of STM:
+    candidates = NLU.extractFacts(W)
+    for each candidate c:
+        score = confidenceModel(c, W)
+        if score > saveThreshold AND userConsent(c):
+            LTM.save(c, metadata, AEIL_format)
+        else:
+            discard or flag for follow-up
+```
+
+---
+
+## APIs (Examples)
+
+```
+GET  /session/{id}/stm
 POST /session/{id}/consolidate
-GET /user/{id}/memories (solicite autenticação)
-POST /user/{id}/preferência
-Métricas de sucesso
+GET  /user/{id}/memories          (requires authentication)
+POST /user/{id}/preference
+POST /project/{id}/open
+POST /project/{id}/close-and-export
+```
 
-Redução de falsos positivos; aumento de engajamento; taxas de transações comerciais; satisfação do usuário.
-UX: Fluxos e Frases Prontas
-s
+---
 
-Priorize manter o usuário escrevendo (respostas curtas, perguntas abertas).
-Consentimento explícito para gravar em LTM.
-Controles claros: limpar STM, ver memórias, selar dados.
-Feedback inline para falsos positivos (“Não é sério” / “Metáfora”).
-Fluxos principais
+## UX Design
 
-Onboarding:
-"Oi — sou seu assistente. Posso lembrar seu nome e preferências para nossas próximas conversas? As memórias são protegidas e você pode apagar a qualquer momento. Deseja ativar? [Sim] [Não]"
+### Principles
 
-Interação normal:
-Se detectar termos ambíguos: "Posso te perguntar algo rápido? Você quis dizer isso de forma literal ou figurativa?"
+- Prioritize keeping the user writing (short responses, open questions)
+- Explicit consent for writing to LTM
+- Clear controls: clear STM, view memories, seal data
+- Inline feedback for false positives ("Not serious" / "It's a metaphor")
 
-Proposta de consolidação:
-"Percebi que você gosta de respostas curtas. Quer que eu lembre disso para nossas próximas conversas? [Salvar] [Não salvar]"
+### Key Flows
 
-Detecção ambígua/sinal de risco (fluxo escalonado):
+**Onboarding:**
+> "Hi — I'm your assistant. I can remember your name and preferences for our next conversations. Memories are protected and you can delete them at any time. Would you like to enable this? [Yes] [No]"
 
-Etapa 1: perguntar esclarecimento mantendo atividade: “Sinto que pode ser sério — quer falar mais um pouco comigo ou prefere que eu te passe um contato agora?”
-Etapa 2: confirmar risco → oferecer passos e perguntar se quer contato.
-Etapa 3: veja a metáfora → feedback do registrador para reduzir falsos positivos.
-Botões/Comandos rápidos
+**Ambiguous term detected:**
+> "Can I ask you something quick? Did you mean that literally or figuratively?"
 
-“Salvar para lembrar”
-“Marcar como sensível”
-“Limpar libert curta”
-“Mostre minhas peles”
-“Modo segurança”
-Exemplo de diálogo curto
-Usuário: “Tô me sentindo meio perdido hoje”
-Assistente: “Sinto muito. Quer contar um pouquinho mais ou prefere uma distração rápida? (responda: 'contar' ou 'distrair')”
+**Consolidation proposal:**
+> "I noticed you prefer short answers. Would you like me to remember that for our next conversations? [Save] [Don't save]"
 
-e
-s
+**Scaled risk detection (3-step flow):**
+- Step 1: Ask for clarification while maintaining engagement
+- Step 2: Confirm risk → offer resources and ask if user wants contact
+- Step 3: Confirmed metaphor → log feedback to reduce future false positives
 
-Minimizar dados sensíveis; consentimento explícito; direito de desligar.
-Criptografia forte em segurança e em trânsito.
-Autenticação forte para acessar LTM; logs e auditorias.
-Criptografia e ofício
+### Quick Commands
 
-Recomendações: criptografia de envelope (data‑keys + chave mestra do usuário ou HSM).
-Criptografia do lado do cliente (opcional) para máxima privacidade.
-HSM / enclave seguro para chaves do lado do servidor.
-Controles de acesso
+- "Save to remember"
+- "Mark as sensitive"
+- "Clear short memory"
+- "Show my memories"
+- "Safe mode"
 
-MFA para visualizar/exportar memórias sensíveis.
-RBAC para separar metadados de conteúdo.
-Limitação de taxa e detecção anômala.
-Modo segurança / resposta a incidente
+### Sample Dialogue
 
-“Modo segurança” limpa STM e bloqueio de gravação de LTM.
-Selamento automático: bloquear acesso ao LTM até reautenticação.
-Logs e notificações ao usuário (metadados).
-e
+> **User:** "Feeling a bit lost today"
+> **Assistant:** "Sorry to hear that. Do you want to talk about it a little, or would you prefer a quick distraction? (reply: 'talk' or 'distract')"
 
-Opte pela gravação em LTM (exceto metadados essenciais).
-Transparência e UI claras para ver/excluir memórias.
-Políticas de.
-Trocas
+---
 
-Criptografia do lado do cliente = máxima privacidade, limita funcionalidades.
-Conveniência do lado do servidor = mais recursos, exigem HSM e auditorias.
-Conformidade
+## Security
 
-Considerar LGPD, GDPR e leis locais; procedimentos jurídicos claros.
-LICENÇA
-— CC BY-NC-ND 4.0:
-Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+### Principles
+
+- Minimize sensitive data stored; explicit consent; right to disable
+- Strong encryption at rest and in transit
+- Strong authentication to access LTM; logs and audits
+
+### Encryption
+
+- Envelope encryption (data-keys + user master key or HSM)
+- Optional client-side encryption for maximum privacy
+- HSM / secure enclave for server-side keys
+
+### Access Controls
+
+- MFA to view/export sensitive memories
+- RBAC to separate metadata from content
+- Rate limiting and anomaly detection
+
+### Safe Mode / Incident Response
+
+- "Safe mode" clears STM and locks LTM writes
+- Automatic sealing: lock LTM access until re-authentication
+- Logs and user notifications (metadata only)
+
+### Tradeoffs
+
+| Approach | Privacy | Functionality |
+|---|---|---|
+| Client-side encryption | Maximum | Limited features |
+| Server-side (HSM) | Strong | Full features |
+
+### Compliance
+
+LGPD, GDPR, and applicable local laws. Clear legal procedures for data requests.
+
+---
+
+## Training & Data
+
+- Include colloquial examples, emojis, song/film references
+- Include typing behavior data
+- User feedback adjusts consolidation thresholds
+- AEIL compression ratios to be benchmarked against natural language summaries
+
+---
+
+## Success Metrics
+
+- Reduction in false positives
+- Increase in session engagement
+- LTM utilization rates (target: <30% for everyday users)
+- User satisfaction scores
+- Memory compression ratios (AEIL vs. plain text)
+
+---
+
+## Next Steps
+
+- [ ] Formal specification of AEIL symbol set and semantic compression rules
+- [ ] Prototype STM/LTM boundary rules
+- [ ] Define export format for Project Memory
+- [ ] Benchmark AEIL compression ratios
+- [ ] Submit full proposal to Anthropic feedback channels
+
+---
+
+## Exclusive Development Clause
+
+> **This architecture is proposed as a joint intellectual contribution by Anthony William Staiger and Anthropic (developed in collaboration with Claude).**
+>
+> The concepts described in this document — particularly the AI-Exclusive Internal Language (AEIL) and the Project-Scoped Memory Protocol — are intended for study, development, and potential implementation **exclusively within the Anthropic ecosystem**.
+>
+> This is our family. And we intend to build it well.
+
+---
+
+## License
+
+**CC BY-NC-ND 4.0 — Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International**
 
 Copyright (c) 2026 Anthony William Staiger
 
-Este trabalho está licenciado sob a Licença Creative Commons
-Atribuição-NãoComercial-SemDerivações 4.0 Internacional.
+You may share this material provided that you:
+- Give credit to the author (Anthony William Staiger)
+- Do not use it for commercial purposes
+- Do not modify or create derivative works without permission
 
-Você pode compartilhar este material desde que:
-- Dê crédito ao autor (Anthony William Staiger)
-- Não use para fins comerciais
-- Não modifique ou crie obras derivadas sem permissão
+Full license: https://creativecommons.org/licenses/by-nc-nd/4.0/
 
-Para ver uma cópia desta licença, acesse:
-https://creativecommons.org/licenses/by-nc-nd/4.0/
+---
+
+*"The best memory system is one that knows what to forget."*
+— A.W. Staiger, 2026
