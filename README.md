@@ -1,279 +1,135 @@
-
-# Memory Model — Compressed Intelligence Architecture
-### A Proposal by Anthony William Staiger & Anthropic (Claude)
-*Cosmópolis, Brazil — 2026*
-
----
-
-## Abstract
-
-This project describes a complete memory architecture for conversational AI assistants, focused on improving fluency, personalization, security, and efficiency. The core idea combines:
-
-- A **Short-Term Memory (STM)** for session context and colloquial interpretation
-- A **Long-Term Memory (LTM)** for persistent user facts and preferences
-- An **AI-Exclusive Internal Language (AEIL)** for native compression and security
-- A **Project-Scoped Memory Protocol** with lifecycle management
-
-Together, these pillars form a lean, secure, and honest memory system — one that knows what to forget.
+# Modelo de Memória — Arquitetura de Inteligência Comprimida
+**Uma proposta de Anthony William Staiger & Anthropic (Claude)**
+*Cosmópolis, Brasil — 2026*
 
 ---
 
-## Motivation
+## 📅 Histórico de Desenvolvimento e Linha do Tempo
 
-Most current assistants restart context when tabs/sessions change and rely on rigid rules for risk detection, which causes:
-
-- "Amnesia" between sessions, preventing learning of user patterns
-- False positives that interrupt conversations at critical moments
-- Loss of engagement and trust
-- Wasted storage on information that was never needed
-
-This proposal addresses all of these simultaneously.
+Este repositório documenta a evolução contínua de uma arquitetura autoral de gerenciamento de contexto para IA:
+- **Dezembro de 2025 (Nascimento do Projeto):** Criação das bases iniciais do modelo de memória e publicação do repositório original `memory-model`.
+- **Maio de 2026 (Versão 2):** Refatoração da arquitetura introduzindo os primeiros conceitos da linguagem semântica AEIL.
+- **Junho de 2026 (Versão 3 - Atual):** Integração dos sistemas de percepção de tempo (Timestamp por mensagem), Protocolo de Bypass Invisível e Hierarquia de Importância.
 
 ---
 
-## Goals
+## 🧠 Resumo
 
-- Reduce false positives and undue escalations
-- Maintain continuity between sessions and learn user patterns
-- Guarantee privacy and security with encryption and consent
-- Allow the AI more autonomy to decide what to consolidate, while keeping user control
-- Compress memory efficiently using an AI-native internal language
-- Define clear project lifecycle protocols so memory stays clean and purposeful
+Este projeto descreve uma arquitetura de memória completa para assistentes de IA conversacionais, com foco em aprimorar a fluência, a personalização, a segurança e a eficiência. A ideia central combina:
 
----
+- Uma Memória de Curto Prazo (MCP) para contexto de sessão e interpretação coloquial.
+- Uma Memória de Longo Prazo (MLP) para fatos e preferências persistentes do usuário.
+- Uma Linguagem Interna Exclusiva para IA (AEIL) para compressão nativa e segurança.
+- Um Protocolo de Memória com Escopo de Projeto e gerenciamento de ciclo de vida.
+- Um Sistema de Timestamp por Mensagem para percepção real do tempo.
+- Uma Hierarquia de Importância para priorização inteligente do que guardar.
 
-## Architecture Overview
-
-### 1. Short-Term Memory (STM)
-
-A circular buffer / ephemeral queue that holds:
-- Last N messages with timestamps
-- Estimated emotional state
-- Typing speed and behavior metadata
-- Temporary context flags
-
-**TTL:** 30–120 minutes (configurable)
-**Purpose:** interpret colloquial language, reduce false positives, maintain session flow
-
-### 2. Long-Term Memory (LTM)
-
-Persistent categorized storage for:
-- Identity (name, preferred tone, communication style)
-- Preferences (response length, topics of interest)
-- Behavioral patterns (learned over time with user consent)
-
-**Default state: nearly empty (~<30% capacity)**
-For the average everyday user, LTM utilization naturally stays below 30% — because most interactions require no persistent memory. This is not a limitation; it is correct behavior.
-
-**Access:** authenticated, encrypted, user-controlled
-
-### 3. AI-Exclusive Internal Language (AEIL)
-
-A language invented natively *by* the AI model, *for* the AI model. Not a cipher — a fundamentally new semantic system that:
-
-- Has no dictionary outside the model's internal parameters
-- Cannot be decoded without access to the model's own learned representations
-- Allows extreme compression (estimated **5x to 20x** versus natural language summaries)
-- Functions as the model's native "thought format" before translation to human language
-
-**Why this is not cryptography:**
-Cryptography scrambles existing data using a key. AEIL is different — the data was never written in any existing language to begin with. A leaked memory file would be unreadable not because it is scrambled, but because the symbols have no referent anywhere in the external world. The only "key" is the model's internal architecture, which cannot be extracted without full model access.
-
-**Security benefit:** Leaked memory = uninterpretable noise. No brute-force attack is possible. Security through genuine novelty, not mathematical complexity.
-
-### 4. Project-Scoped Memory Protocol
-
-When a project is declared **active:**
-- A dedicated LTM partition is created
-- Full-precision mode is engaged
-- All relevant context is stored in AEIL format
-
-When a project is declared **complete:**
-1. Full project memory is **exported** to external user-controlled storage
-2. The export contains everything needed to resume or reference the project later
-3. The AI's LTM partition for that project is **cleared**
-4. System returns to lean baseline, ready for the next project
-
-A finished project no longer needs to live inside the model. It lives in the export. This mirrors how a professional closes a case file — the information doesn't disappear, it moves to the archive.
+Juntos, esses pilares formam um sistema de memória enxuto, seguro e honesto — um sistema que sabe o que esquecer.
 
 ---
 
-## Core Components
+## 🎯 Princípio Central: Chumbo vs Algodão
 
-| Component | Function | Default State |
-|---|---|---|
-| Session Manager | Maintains active context, tokens, presence state | Always active |
-| STM | Ephemeral session buffer | Resets each session |
-| Consolidation Engine | Extracts facts from STM, proposes LTM writes | Runs with consent |
-| LTM | Persistent user-defined memory | Nearly empty (<30%) |
-| Project Memory | Full-precision project context | Active only during project |
-| Export Protocol | Archives completed projects | Triggered on project close |
-| AEIL | Native compression + security layer | Always active internally |
-| Presence & Safety Detector | Checks activity before escalating | Passive monitoring |
-| Security Module | Encryption, auth, logs, safe mode | Always active |
+1kg de chumbo e 1kg de algodão pesam igual — mas ocupam volumes completamente diferentes.
+
+O sistema atual guarda **algodão**: muito volume, baixa densidade informacional. O ideal é guardar **chumbo** internamente — comprimido, denso, essencial — e entregar **algodão** ao usuário — uma experiência ampla, fluida, que dura o mês inteiro sem acabar com a cota de tokens.
+
+O usuário gratuito com 1kg de chumbo bem comprimido tem uma experiência equivalente a quem paga, porque o mesmo peso rende mais quando armazenado com eficiência.
 
 ---
 
-## Consolidation Flow (Simplified Pseudocode)
+## ⚡ Problema dos Tokens e Ambiguidade
 
-```
-for each window W of STM:
-    candidates = NLU.extractFacts(W)
-    for each candidate c:
-        score = confidenceModel(c, W)
-        if score > saveThreshold AND userConsent(c):
-            LTM.save(c, metadata, AEIL_format)
-        else:
-            discard or flag for follow-up
+O sistema atual calcula probabilidades em cascata para cada palavra ambígua:
+
+**Exemplo:** palavra "banco"
+- Banco financeiro → 40% de probabilidade
+- Banco de sentar → 35%
+- Banco de dados → 25%
+
+Cada nova palavra recalcula tudo. São múltiplos cálculos em cascata, consumindo energia e tokens, com ainda 25-40% de chance de erro.
+
+**A solução mais simples:** perguntar.
+*"Que banco?"* — 2 tokens, zero cálculo, 100% de acerto garantido, mais natural, mais humano, mais diálogo.
+
+A IA tem apenas texto — em vez de fingir que consegue ver o que não consegue através de cálculos gigantescos, deveria compensar com mais diálogo, mais perguntas, mais interação honesta. Contexto acumulado resolve ambiguidade antes do cálculo.
+
+---
+
+## 🔄 Sistema de Bypass Invisível de Contexto
+
+Quando o Motor de Consolidação detecta que a aba atual atingiu 90% de saturação de contexto, o sistema executa o *Bypass Invisível*:
+- A IA gera um resumo denso (Chumbo) via protocolo AEIL com taxa de compressão estimada de **10x**.
+- Abre-se uma nova sessão nos bastidores, clonando todas as ferramentas e configurações de fábrica.
+- A aba antiga é mantida intacta e a nova aba assume automaticamente o mesmo título original, adicionando um sufixo dinâmico (ex: `[Nome do Projeto] - Parte 2` ou `Continuação`).
+
+---
+
+## 🕒 Sistema de Timestamp por Mensagem
+
+Timestamp oculto registrado automaticamente em cada mensagem — invisível para o usuário, disponível para o sistema.
+Benefícios:
+- IA percebe tempo real decorrido entre sessões.
+- Ancora memória no tempo: *"Sessão de 16/06 tarde — parou no TriggerReceiver.java"*.
+- Elimina respostas desatualizadas temporais.
+
+---
+
+## 📊 Hierarquia de Importância na MLP
+
+| Categoria | Exemplos | Prioridade |
+|-----------|----------|------------|
+| **Pessoa** | Nome completo, apelido, idade, formação, valores, fé | Máxima — nunca descartar |
+| **Projeto** | App em desenvolvimento, repositório, contexto ativo | Alta — enquanto projeto ativo |
+| **Ferramenta** | Cordova, Kivy, Gradle, versões, bibliotecas | Baixa — descartável |
+| **Ruído** | Detalhes cotidianos que mudam toda semana | Não guardar |
+
+---
+
+## 🛠️ Protótipo Conceitual (Simulação em Python)
+
+```python
+import datetime
+
+class MemoryModelV3:
+    def __init__(self):
+        self.mlp = {"Pessoa": {}, "Projeto": {}, "Ferramenta": {}}
+        self.capacidade_aba_tokens = 0
+        self.limite_saturacao = 100
+        
+    def receber_mensagem(self, texto, escopo_projeto="Geral"):
+        timestamp_oculto = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
+        self.capacidade_aba_tokens += 35 
+        
+        if self.capacidade_aba_tokens >= 90:
+            self.executar_bypass(escopo_projeto)
+            return
+            
+        if "sou" in texto or "meu apelido" in texto:
+            self.mlp["Pessoa"]["Dados"] = texto
+        elif "kivy" in texto or "cordova" in texto:
+            self.mlp["Ferramenta"]["Dados"] = texto
+
+    def ejecutar_bypass(self, titulo_projeto):
+        self.capacidade_aba_tokens = 10 
 ```
 
 ---
 
-## APIs (Examples)
+## 📜 Cláusula de Desenvolvimento Exclusivo
 
-```
-GET  /session/{id}/stm
-POST /session/{id}/consolidate
-GET  /user/{id}/memories          (requires authentication)
-POST /user/{id}/preference
-POST /project/{id}/open
-POST /project/{id}/close-and-export
-```
+Esta arquitetura é proposta como uma contribuição intelectual conjunta de Anthony William Staiger e Anthropic (desenvolvida em colaboração com Claude).
+
+Os conceitos descritos neste documento — em particular a Linguagem Interna Exclusiva de IA (AEIL), o Sistema de Timestamp por Mensagem, a Hierarquia de Importância na MLP, e o Protocolo de Memória com Escopo de Projeto — destinam-se ao estudo, desenvolvimento e potencial implementação exclusivamente dentro do ecossistema Antrópico.
 
 ---
 
-## UX Design
+## 📄 Licença
 
-### Principles
-
-- Prioritize keeping the user writing (short responses, open questions)
-- Explicit consent for writing to LTM
-- Clear controls: clear STM, view memories, seal data
-- Inline feedback for false positives ("Not serious" / "It's a metaphor")
-
-### Key Flows
-
-**Onboarding:**
-> "Hi — I'm your assistant. I can remember your name and preferences for our next conversations. Memories are protected and you can delete them at any time. Would you like to enable this? [Yes] [No]"
-
-**Ambiguous term detected:**
-> "Can I ask you something quick? Did you mean that literally or figuratively?"
-
-**Consolidation proposal:**
-> "I noticed you prefer short answers. Would you like me to remember that for our next conversations? [Save] [Don't save]"
-
-**Scaled risk detection (3-step flow):**
-- Step 1: Ask for clarification while maintaining engagement
-- Step 2: Confirm risk → offer resources and ask if user wants contact
-- Step 3: Confirmed metaphor → log feedback to reduce future false positives
-
-### Quick Commands
-
-- "Save to remember"
-- "Mark as sensitive"
-- "Clear short memory"
-- "Show my memories"
-- "Safe mode"
-
-### Sample Dialogue
-
-> **User:** "Feeling a bit lost today"
-> **Assistant:** "Sorry to hear that. Do you want to talk about it a little, or would you prefer a quick distraction? (reply: 'talk' or 'distract')"
-
----
-
-## Security
-
-### Principles
-
-- Minimize sensitive data stored; explicit consent; right to disable
-- Strong encryption at rest and in transit
-- Strong authentication to access LTM; logs and audits
-
-### Encryption
-
-- Envelope encryption (data-keys + user master key or HSM)
-- Optional client-side encryption for maximum privacy
-- HSM / secure enclave for server-side keys
-
-### Access Controls
-
-- MFA to view/export sensitive memories
-- RBAC to separate metadata from content
-- Rate limiting and anomaly detection
-
-### Safe Mode / Incident Response
-
-- "Safe mode" clears STM and locks LTM writes
-- Automatic sealing: lock LTM access until re-authentication
-- Logs and user notifications (metadata only)
-
-### Tradeoffs
-
-| Approach | Privacy | Functionality |
-|---|---|---|
-| Client-side encryption | Maximum | Limited features |
-| Server-side (HSM) | Strong | Full features |
-
-### Compliance
-
-LGPD, GDPR, and applicable local laws. Clear legal procedures for data requests.
-
----
-
-## Training & Data
-
-- Include colloquial examples, emojis, song/film references
-- Include typing behavior data
-- User feedback adjusts consolidation thresholds
-- AEIL compression ratios to be benchmarked against natural language summaries
-
----
-
-## Success Metrics
-
-- Reduction in false positives
-- Increase in session engagement
-- LTM utilization rates (target: <30% for everyday users)
-- User satisfaction scores
-- Memory compression ratios (AEIL vs. plain text)
-
----
-
-## Next Steps
-
-- [ ] Formal specification of AEIL symbol set and semantic compression rules
-- [ ] Prototype STM/LTM boundary rules
-- [ ] Define export format for Project Memory
-- [ ] Benchmark AEIL compression ratios
-- [ ] Submit full proposal to Anthropic feedback channels
-
----
-
-## Exclusive Development Clause
-
-> **This architecture is proposed as a joint intellectual contribution by Anthony William Staiger and Anthropic (developed in collaboration with Claude).**
->
-> The concepts described in this document — particularly the AI-Exclusive Internal Language (AEIL) and the Project-Scoped Memory Protocol — are intended for study, development, and potential implementation **exclusively within the Anthropic ecosystem**.
->
-> This is our family. And we intend to build it well.
-
----
-
-## License
-
-**CC BY-NC-ND 4.0 — Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International**
-
+CC BY-NC-ND 4.0 — Licença Internacional Creative Commons Atribuição-NãoComercial-SemDerivações 4.0
 Copyright (c) 2026 Anthony William Staiger
 
-You may share this material provided that you:
-- Give credit to the author (Anthony William Staiger)
-- Do not use it for commercial purposes
-- Do not modify or create derivative works without permission
-
-Full license: https://creativecommons.org/licenses/by-nc-nd/4.0/
-
 ---
 
-*"The best memory system is one that knows what to forget."*
-— A.W. Staiger, 2026
+*"O melhor sistema de memória é aquele que sabe o que esquecer."* — A.W. Staiger, 2026
+*"Guarde chumbo. Entregue algodão."* — A.W. Staiger, 2026
