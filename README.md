@@ -96,23 +96,22 @@ class MemoryModelV3:
         self.mlp = {"Pessoa": {}, "Projeto": {}, "Ferramenta": {}}
         self.capacidade_aba_tokens = 0
         self.limite_saturacao = 100
-        
+
     def receber_mensagem(self, texto, escopo_projeto="Geral"):
         timestamp_oculto = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
-        self.capacidade_aba_tokens += 35 
-        
+        self.capacidade_aba_tokens += 35
+
         if self.capacidade_aba_tokens >= 90:
             self.executar_bypass(escopo_projeto)
             return
-            
+
         if "sou" in texto or "meu apelido" in texto:
             self.mlp["Pessoa"]["Dados"] = texto
         elif "kivy" in texto or "cordova" in texto:
             self.mlp["Ferramenta"]["Dados"] = texto
 
-    def ejecutar_bypass(self, titulo_projeto):
-        self.capacidade_aba_tokens = 10 
-```
+    def executar_bypass(self, titulo_projeto):
+        self.capacidade_aba_tokens = 10
 
 ---
 
