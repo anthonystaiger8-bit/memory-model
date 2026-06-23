@@ -10,6 +10,7 @@ Este repositório documenta a evolução contínua de uma arquitetura autoral de
 - **Dezembro de 2025 (Nascimento do Projeto):** Criação das bases iniciais do modelo de memória e publicação do repositório original `memory-model`.
 - **Maio de 2026 (Versão 2):** Refatoração da arquitetura introduzindo os primeiros conceitos da linguagem semântica AEIL.
 - **Junho de 2026 (Versão 3 - Atual):** Integração dos sistemas de percepção de tempo (Timestamp por mensagem), Protocolo de Bypass Invisível, Hierarquia de Importância e **Sistema de Consolidação Inteligente por Janela Temporal**.
+- **Junho de 2026 — Validação Prática + Proposta do Relógio:** Anthony identificou que Claude percebe data mas não hora em tempo real. Foi à documentação oficial do Claude Code Docs e trouxe a solução técnica `--append-system-prompt` como proposta de melhoria. O gap de 18 minutos registrado na demo (`21:44:06 → 22:02:27`) validou na prática o Sistema de Timestamp por Mensagem. A proposta foi submetida à Anthropic como sugestão de implementação padrão na plataforma.
 
 ---
 
@@ -76,6 +77,8 @@ Timestamp oculto registrado automaticamente em cada mensagem — invisível para
 - Elimina respostas desatualizadas temporalmente.
 - Habilita o **Sistema de Consolidação Inteligente** (ver seção abaixo).
 
+**Validação prática (22/06/2026):** Na demo interativa, Anthony abriu a sessão às `21:44:06` e enviou a primeira mensagem às `22:02:27` — um gap de 18 minutos registrado automaticamente pelo sistema, sem nenhuma intervenção do usuário. O timestamp capturou a inatividade em silêncio, exatamente como proposto na arquitetura.
+
 ---
 
 ## 🌙 Sistema de Consolidação Inteligente por Janela Temporal
@@ -116,6 +119,33 @@ Informações antigas **perdem relevância automaticamente** a menos que sejam r
 | **Projeto** | App em desenvolvimento, repositório, contexto ativo | Alta — enquanto projeto ativo |
 | **Ferramenta** | Cordova, Kivy, Gradle, versões, bibliotecas | Baixa — descartável |
 | **Ruído** | Detalhes cotidianos que mudam toda semana | Não guardar |
+
+---
+
+## ⌚ Implementação do Relógio em Tempo Real
+
+Para que Claude perceba a hora atual no momento exato da conversa — e não apenas a data aproximada pelo sistema — é necessário injetar o timestamp via `--append-system-prompt`. Esta solução foi identificada por **Anthony W. Staiger** na documentação oficial do Claude Code Docs e submetida como proposta de melhoria para implementação padrão na plataforma Anthropic.
+
+**Na CLI (Claude Code):**
+```bash
+claude --append-system-prompt "Current date and time: $(date)"
+```
+
+**No Agent SDK (Python):**
+```python
+from claude_agent_sdk import query, ClaudeAgentOptions
+
+async for message in query(
+    prompt="Your task here",
+    options=ClaudeAgentOptions(
+        append_system_prompt=f"Current date and time: {datetime.now().isoformat()}"
+    )
+)
+```
+
+> *"O relógio foi encomendado. Agora é aguardar a entrega."* — A.W. Staiger, 2026
+
+**Fonte:** Documentação oficial Claude Code Docs — `code.claude.com`
 
 ---
 
@@ -178,6 +208,7 @@ Copyright (c) 2026 Anthony William Staiger
 
 ---
 
-*"O melhor sistema de memória é aquele que sabe o que esquecer."* — A.W. Staiger, 2026
-*"Guarde chumbo. Entregue algodão."* — A.W. Staiger, 2026
-*"Com o relógio, você controla a linha do tempo e do raciocínio."* — A.W. Staiger, 2026
+*"O melhor sistema de memória é aquele que sabe o que esquecer."* — A.W. Staiger, 2026  
+*"Guarde chumbo. Entregue algodão."* — A.W. Staiger, 2026  
+*"Com o relógio, você controla a linha do tempo e do raciocínio."* — A.W. Staiger, 2026  
+*"O relógio foi encomendado. Agora é aguardar a entrega."* — A.W. Staiger, 2026
