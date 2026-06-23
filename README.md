@@ -122,6 +122,24 @@ Informações antigas **perdem relevância automaticamente** a menos que sejam r
 
 ---
 
+## 📸 Demo em Funcionamento
+
+A demo interativa está disponível em: **anthonystaiger8-bit.github.io**
+
+### Timestamp capturando gap de inatividade (18 minutos)
+![Timestamp gap 18 minutos](assets/demo-timestamp-gap.png)
+> Gap de `21:44:06 → 22:02:27` registrado automaticamente — sem nenhuma intervenção do usuário.
+
+### MLP — Hierarquia de Categorias em tempo real
+![MLP Categorias](assets/demo-mlp-categorias.png)
+> Pessoa → Projeto → Ferramenta → Ruído visíveis ao vivo durante a conversa.
+
+### Como funciona a demo
+![Como funciona](assets/demo-como-funciona.png)
+> Todos os mecanismos do Memory Model V3 descritos na interface.
+
+---
+
 ## ⌚ Implementação do Relógio em Tempo Real
 
 Para que Claude perceba a hora atual no momento exato da conversa — e não apenas a data aproximada pelo sistema — é necessário injetar o timestamp via `--append-system-prompt`. Esta solução foi identificada por **Anthony W. Staiger** na documentação oficial do Claude Code Docs e submetida como proposta de melhoria para implementação padrão na plataforma Anthropic.
