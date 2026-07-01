@@ -1,6 +1,6 @@
 # Modelo de Memória — Arquitetura de Inteligência Comprimida
 Uma proposta de Anthony William Staiger & Anthropic (Claude) · Cosmópolis, Brasil — 2026
-
+> 🎮 **[Demo interativa — sem chave de API](https://anthonystaiger8-bit.github.io/memory-model-demo/)** · 💙 **[Apoie o projeto](https://github.com/sponsors/anthonystaiger8-bit)**
 ---
 
 ## 📅 Histórico de Desenvolvimento e Linha do Tempo
@@ -124,7 +124,7 @@ Informações antigas **perdem relevância automaticamente** a menos que sejam r
 
 ## 📸 Demo em Funcionamento
 
-A demo interativa está disponível em: **anthonystaiger8-bit.github.io**
+A demo interativa está disponível em: **[anthonystaiger8-bit.github.io/memory-model-demo](https://anthonystaiger8-bit.github.io/memory-model-demo/)**
 
 ### Timestamp capturando gap de inatividade (18 minutos)
 ![Timestamp gap 18 minutos](assets/demo-timestamp-gap.png)
