@@ -33,6 +33,7 @@ Guardar internamente pouca informação, mas densa e comprimida (o **chumbo**), 
 ## Documentação completa
 
 Todos os detalhes (linha do tempo, sistemas, relógio em tempo real e protótipo) estão em [`docs/README-completo.md`](docs/README-completo.md).
+- [Memória de Longo Prazo e Porta Única](docs/memoria-de-longo-prazo.md)
 
 ## Autor
 
