@@ -1,5 +1,5 @@
 # Modelo de Memória — Arquitetura de Inteligência Comprimida
-Uma proposta de Anthony William Staiger & Anthropic (Claude) · Cosmópolis, Brasil — 2026
+
 > 🎮 **[Demo interativa — sem chave de API](https://anthonystaiger8-bit.github.io/memory-model-demo/)** · 💙 **[Apoie o projeto](https://github.com/sponsors/anthonystaiger8-bit)**
 ---
 
@@ -211,17 +211,16 @@ class MemoryModelV3:
 
 ---
 
-## 📜 Cláusula de Desenvolvimento Exclusivo
+## 📜 Autoria e Desenvolvimento
 
-Esta arquitetura é proposta como uma contribuição intelectual conjunta de **Anthony William Staiger** e **Anthropic** (desenvolvida em colaboração com Claude).
+Esta arquitetura foi idealizada por **Anthony William Staiger**, com apoio do **Claude** (Anthropic) na escrita e na discussão das ideias.
 
-Os conceitos descritos neste documento — em particular a Linguagem Interna Exclusiva de IA (AEIL), o Sistema de Timestamp por Mensagem, a Hierarquia de Importância na MLP, o Protocolo de Memória com Escopo de Projeto e o **Sistema de Consolidação Inteligente por Janela Temporal** — destinam-se ao estudo, desenvolvimento e potencial implementação exclusivamente dentro do ecossistema Anthropic.
-
+Os conceitos descritos neste documento (em particular a Linguagem Interna AEIL, o Sistema de Timestamp por Mensagem, a Hierarquia de Importância na MLP, o Protocolo de Memória com Escopo de Projeto e o **Sistema de Consolidação Inteligente por Janela Temporal**) são propostos para estudo e para potencial implementação por quem se interessar, em especial no ecossistema Anthropic, respeitando a licença abaixo.
 ---
 
 ## 📄 Licença
 
-CC BY-NC-ND 4.0 — Licença Internacional Creative Commons Atribuição-NãoComercial-SemDerivações 4.0
+CC BY-NC 4.0 — Licença Internacional Creative Commons Atribuição-NãoComercial 4.0
 Copyright (c) 2026 Anthony William Staiger
 
 ---
