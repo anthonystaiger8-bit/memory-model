@@ -127,15 +127,15 @@ Informações antigas **perdem relevância automaticamente** a menos que sejam r
 A demo interativa está disponível em: **[anthonystaiger8-bit.github.io/memory-model-demo](https://anthonystaiger8-bit.github.io/memory-model-demo/)**
 
 ### Timestamp capturando gap de inatividade (18 minutos)
-![Timestamp gap 18 minutos](assets/demo-timestamp-gap.png)
+![Timestamp gap 18 minutos](../assets/demo-timestamp-gap.png)
 > Gap de `21:44:06 → 22:02:27` registrado automaticamente — sem nenhuma intervenção do usuário.
 
 ### MLP — Hierarquia de Categorias em tempo real
-![MLP Categorias](assets/demo-mlp-categorias.png)
+![MLP Categorias](../assets/demo-mlp-categorias.png)
 > Pessoa → Projeto → Ferramenta → Ruído visíveis ao vivo durante a conversa.
 
 ### Como funciona a demo
-![Como funciona](assets/demo-como-funciona.png)
+![Como funciona](../assets/demo-como-funciona.png)
 > Todos os mecanismos do Memory Model V3 descritos na interface.
 
 ---
