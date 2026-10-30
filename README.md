@@ -45,7 +45,7 @@ Todos os detalhes (linha do tempo, sistemas, relógio em tempo real e protótipo
 
 ## Licença
 
-CC BY-NC-ND 4.0 · Copyright (c) 2026 Anthony William Staiger
+CC BY-NC 4.0 · Copyright (c) 2026 Anthony William Staiger
 
 ---
 
