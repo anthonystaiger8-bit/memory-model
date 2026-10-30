@@ -37,7 +37,7 @@ Todos os detalhes (linha do tempo, sistemas, relógio em tempo real e protótipo
 
 ## Autor
 
-**Anthony William Staiger** · [GitHub](https://github.com/anthonystaiger8-bit) · [anthonystaiger8gmail.com]
+**Anthony William Staiger** · [GitHub](https://github.com/anthonystaiger8-bit) · [anthonystaiger8@gmail.com](mailto:anthonystaiger8@gmail.com)
 
 ## Licença
 
