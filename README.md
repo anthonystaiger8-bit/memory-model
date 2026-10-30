@@ -30,6 +30,10 @@ Guardar internamente pouca informação, mas densa e comprimida (o **chumbo**), 
 ![MLP — categorias em tempo real](assets/demo-mlp-categorias.png)
 ![Timestamp registrando 18 minutos de inatividade](assets/demo-timestamp-gap.png)
 
+![Timestamp registrando 18 minutos de inatividade](assets/demo-timestamp-gap.png)
+
+**Prova do relógio:** [`src/relogio.py`](src/relogio.py) calcula o intervalo entre mensagens, classifica a pausa e reproduz o gap real da demo (21:44:06 → 22:02:27 = 18min 21s). Para rodar: `python src/relogio.py`
+
 ## Documentação completa
 
 Todos os detalhes (linha do tempo, sistemas, relógio em tempo real e protótipo) estão em [`docs/README-completo.md`](docs/README-completo.md).
