@@ -41,11 +41,11 @@ Todos os detalhes (linha do tempo, sistemas, relógio em tempo real e protótipo
 
 ## Autor
 
-**Anthony William Staiger** · [GitHub](https://github.com/anthonystaiger8-bit) · [anthonystaiger8@gmail.com](mailto:anthonystaiger8@gmail.com)
+**Anthony William Staiger** · [GitHub](https://github.com/anthonystaiger8-bit) · [anthonystaiger8@gmail.com](email:anthonystaiger8@gmail.com)
 
 ## Licença
 
-CC BY-NC 4.0 · Copyright (c) 2026 Anthony William Staiger
+CC BY NC 4.0 · Copyright (c) 2026 Anthony William Staiger
 
 ---
 
